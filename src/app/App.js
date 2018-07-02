@@ -10,7 +10,16 @@ class App extends Component {
   state =
   {
     listings: [],
+    selectedListingId: -1,
   }
+
+  listingSelEvent = (id) =>
+  {
+    this.setState(
+      {
+        selectedListingId: id,
+      });
+  };
 
   componentDidMount ()
   {
@@ -28,7 +37,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="col-sm-6">
-          <Listings listings = {this.state.listings}/>
+          <Listings
+            listings = {this.state.listings}
+            onListingSelection = {this.listingSelEvent}
+          />
         </div>
         <div className="col-sm-6">
           <Building />
